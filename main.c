@@ -240,3 +240,29 @@ void newDelivery() {
         printf("Weight exceeds vehicle capacity!\n");
         return;
     }
+ double cost = calculateCost(dist, vehicleRate[v], weight);
+    double fuelUsed = calculateFuel(dist, vehicleEfficiency[v]);
+    double fuelCost = fuelUsed * FUEL_PRICE;
+    double operational = cost + fuelCost;
+    double profit = cost * 0.25;
+    double charge = operational + profit;
+    double time = calculateTime(dist, vehicleSpeed[v]);
+
+    int delivery[] = {sourceIndex, destIndex, v, weight, dist, cost, fuelUsed, fuelCost, operational, profit, charge, time};
+    deliveries[deliveryCount++] = *delivery;
+
+    printf("\n---------- DELIVERY SUMMARY ----------\n");
+    printf("From: %s  To: %s\n", cities[sourceIndex], cities[destIndex]);
+    printf("Distance: %.2f km\n", dist);
+    printf("Vehicle: %s\n", vehicleName[v]);
+    printf("Weight: %.2f kg\n", deliveryWeight);
+    printf("--------------------------------------\n");
+    printf("Base Cost: %.2f LKR\n", cost);
+    printf("Fuel Used: %.2f L\n", fuelUsed);
+    printf("Fuel Cost: %.2f LKR\n", fuelCost);
+    printf("Operational Cost: %.2f LKR\n", operational);
+    printf("Profit: %.2f LKR\n", profit);
+    printf("Customer Charge: %.2f LKR\n", charge);
+    printf("Estimated Time: %.2f hours\n", time);
+    printf("======================================\n");
+}
