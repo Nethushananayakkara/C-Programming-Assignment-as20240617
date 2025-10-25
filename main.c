@@ -95,3 +95,23 @@ void menu() {
         printf("0. Exit\n");
         printf("Enter choice: ");
         scanf("%d", &choice);
+
+                switch(choice) {
+            case 1: cityManagement();
+            break;
+            case 2: distanceManagement();
+            break;
+            case 3: newDelivery();
+            break;
+            case 4: viewReports();
+            break;
+            case 5: saveData();
+            break;
+            case 6: loadData();
+            break;
+            case 0: printf("Exiting...\n");
+            break;
+            default: printf("Invalid choice!\n");
+        }
+    } while(choice != 0);
+}
