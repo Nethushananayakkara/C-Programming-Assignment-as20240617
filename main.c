@@ -304,4 +304,10 @@ void displayDistanceTable() {
         printf("\n");
     }
 }
+int takeCityIndex(const char *prompt) {
+    int index;
+    printf("%s", prompt);
+    scanf("%d", &index);
+    return index;
+}
 
