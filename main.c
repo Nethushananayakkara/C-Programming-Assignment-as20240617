@@ -51,6 +51,7 @@ double vehicleRate[]={30.0,40.0,80.0};
 double vehicleSpeed[]={60.0,50.0,45.0};
 double vehicleEfficiency[]={12.0,6.0,4.0};
 
+//FUNCTIONS
 void menu();
 void cityManagement();
 void distanceManagement();
@@ -82,6 +83,8 @@ int main() {
     saveData();
     return 0;
 }
+
+//MENU
 void menu() {
     int choice;
     do {
@@ -115,6 +118,8 @@ void menu() {
         }
     } while(choice != 0);
 }
+
+//CITY MANAGEMENT
 void cityManagement() {
     int choiceOfManagement;
     do {
@@ -163,6 +168,8 @@ void cityManagement() {
         }
     } while (choiceOfManagement != 0);
 }
+
+//DISTANCE MANAGEMENT
 void distanceManagement() {
     int ch;
     do {
@@ -196,6 +203,8 @@ void distanceManagement() {
         }
     } while(ch != 0);
 }
+
+//DELIVERIES
 void newDelivery() {
     if (cityCount < 2) {
         printf("Add cities and distances first!\n");
@@ -240,7 +249,8 @@ void newDelivery() {
         printf("Weight exceeds vehicle capacity!\n");
         return;
     }
- double cost = calculateCost(dist, vehicleRate[v], weight);
+    //CALCULATIONS
+    double cost = calculateCost(dist, vehicleRate[v], weight);
     double fuelUsed = calculateFuel(dist, vehicleEfficiency[v]);
     double fuelCost = fuelUsed * FUEL_PRICE;
     double operational = cost + fuelCost;
@@ -266,6 +276,8 @@ void newDelivery() {
     printf("Estimated Time: %.2f hours\n", time);
     printf("======================================\n");
 }
+
+//REPORT
 void viewReports() {
     double totalDist = 0, totalTime = 0, totalProfit = 0, totalRevenue = 0;
     for (int i = 0; i < deliveryCount; i++) {
@@ -284,12 +296,15 @@ void viewReports() {
         printf("Average Delivery Time: %.2f hours\n", totalTime / deliveryCount);
     printf("=============================\n");
 }
+
+//CITY DISPLAY
 void displayCities() {
     printf("\n--- Cities ---\n");
     for (int i = 0; i < cityCount; i++)
         printf("%d. %s\n", i, cities[i]);
 }
 
+//DISTANCE TABLE
 void displayDistanceTable() {
     printf("\n--- Distance Table (km) ---\n      ");
     for (int i = 0; i < cityCount; i++)
@@ -304,6 +319,8 @@ void displayDistanceTable() {
         printf("\n");
     }
 }
+
+
 int takeCityIndex(const char *prompt) {
     int index;
     printf("%s", prompt);
@@ -311,6 +328,7 @@ int takeCityIndex(const char *prompt) {
     return index;
 }
 
+//CALCULATIONS
 double calculateCost(double d, double r, double w) {
     return d * r * (1 + w / 10000.0);
 }
@@ -321,6 +339,7 @@ double calculateTime(double d, double s) {
     return d / s;
 }
 
+//FILE HANDLING FUNCTIONS
 void saveRoutesToFile() {
     FILE *f = fopen("routes.txt", "w");
     if (!f) { printf("Error saving routes!\n"); return; }
