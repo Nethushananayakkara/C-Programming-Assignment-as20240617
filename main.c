@@ -126,3 +126,40 @@ void cityManagement() {
         printf("0. Back\n");
         printf("Enter choice: ");
         scanf("%d", &choiceOfManagement);
+
+         if (choiceOfManagement == 1) {
+            if (cityCount >= MAX_CITIES) {
+                printf("City limit reached!\n");
+            } else {
+                printf("Enter city name: ");
+                scanf("%s", cities[cityCount]);
+                cityCount++;
+                printf("City added.\n");
+            }
+        } else if (choiceOfManagement == 2) {
+            displayCities();
+            int index = takeCityIndex("Enter city index to rename: ");
+            if (index >= 0 && index < cityCount) {
+                printf("Enter new name: ");
+                scanf("%s", cities[index]);
+                printf("City renamed.\n");
+            }
+        } else if (choiceOfManagement == 3) {
+            displayCities();
+            int index = takeCityIndex("Enter city index to remove: ");
+            if (index >= 0 && index < cityCount) {
+                for (int i = index; i < cityCount - 1; i++) {
+                    strcpy(cities[i], cities[i + 1]);
+                    for (int j = 0; j < cityCount; j++) {
+                        distanceMatrix[i][j] = distanceMatrix[i + 1][j];
+                        distanceMatrix[j][i] = distanceMatrix[j][i + 1];
+                    }
+                }
+                cityCount--;
+                printf("City removed.\n");
+            }
+        } else if (choiceOfManagement == 4) {
+            displayCities();
+        }
+    } while (choiceOfManagement != 0);
+}
