@@ -311,3 +311,13 @@ int takeCityIndex(const char *prompt) {
     return index;
 }
 
+double calculateCost(double d, double r, double w) {
+    return d * r * (1 + w / 10000.0);
+}
+double calculateFuel(double d, double e) {
+    return d / e;
+}
+double calculateTime(double d, double s) {
+    return d / s;
+}
+
