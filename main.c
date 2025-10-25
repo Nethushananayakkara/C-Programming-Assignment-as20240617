@@ -50,3 +50,17 @@ int vehicleCapacity[]={1000,5000,10000};
 double vehicleRate[]={30.0,40.0,80.0};
 double vehicleSpeed[]={60.0,50.0,45.0};
 double vehicleEfficiency[]={12.0,6.0,4.0};
+
+void menu();
+void cityManagement();
+void distanceManagement();
+void newDelivery();
+void viewReports();
+void saveData();
+void loadData();
+void displayCities();
+void displayDistanceTable();
+int takeCityIndex(const char *prompt);
+double calculateCost(double d, double r, double w);
+double calculateFuel(double d, double e);
+double calculateTime(double d, double s);
