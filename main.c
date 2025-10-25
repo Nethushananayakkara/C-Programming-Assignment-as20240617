@@ -163,3 +163,12 @@ void cityManagement() {
         }
     } while (choiceOfManagement != 0);
 }
+void distanceManagement() {
+    int ch;
+    do {
+        printf("\n--- DISTANCE MANAGEMENT ---\n");
+        printf("1. Enter/Edit distance\n");
+        printf("2. Display distance table\n");
+        printf("0. Back\n");
+        printf("Enter choice: ");
+        scanf("%d", &ch);
