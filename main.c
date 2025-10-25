@@ -321,3 +321,73 @@ double calculateTime(double d, double s) {
     return d / s;
 }
 
+void saveRoutesToFile() {
+    FILE *f = fopen("routes.txt", "w");
+    if (!f) { printf("Error saving routes!\n"); return; }
+    fprintf(f, "%d\n", cityCount);
+    for (int i = 0; i < cityCount; i++)
+        fprintf(f, "%s\n", cities[i]);
+    for (int i = 0; i < cityCount; i++) {
+        for (int j = 0; j < cityCount; j++)
+            fprintf(f, "%.2f ", distanceMatrix[i][j]);
+        fprintf(f, "\n");
+    }
+    fclose(f);
+}
+
+void loadRoutesFromFile() {
+    FILE *f = fopen("routes.txt", "r");
+    if (!f) return;
+    fscanf(f, "%d\n", &cityCount);
+    for (int i = 0; i < cityCount; i++)
+        fscanf(f, "%s\n", cities[i]);
+    for (int i = 0; i < cityCount; i++)
+        for (int j = 0; j < cityCount; j++)
+            fscanf(f, "%lf", &distanceMatrix[i][j]);
+    fclose(f);
+}
+
+void saveDeliveriesToFile() {
+    FILE *f = fopen("deliveries.txt", "w");
+    if (!f) return;
+    fprintf(f, "%d\n", deliveryCount);
+    for (int i = 0; i < deliveryCount; i++) {
+         int delivery = deliveries[i];
+        fprintf(f, "%d %d %d %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f %.2f\n",
+                deliverySource, deliveryDestination, deliveryVehicleType, deliveryWeight, deliveryDistance,
+                deliveryBaseCost, deliveryFuelUsed, deliveryFuelCost, deliveryOperationalCost,
+                deliveryProfit, deliveryCustomerCharge, deliveryTime);
+    }
+    fclose(f);
+}
+
+void loadDeliveriesFromFile() {
+    FILE *f = fopen("deliveries.txt", "r");
+    if (!f) return;
+    fscanf(f, "%d\n", &deliveryCount);
+    for (int i = 0; i < deliveryCount; i++) {
+          int *d = &deliveries[i];
+        fscanf(f, "%d %d %d %lf %lf %lf %lf %lf %lf %lf %lf %lf",
+               &deliverySource, &deliveryDestination, &deliveryVehicleType, &deliveryWeight,
+               &deliveryDistance, &deliveryBaseCost, &deliveryFuelUsed, &deliveryFuelCost,
+               &deliveryOperationalCost, &deliveryProfit, &deliveryCustomerCharge, &deliveryTime);
+    }
+    fclose(f);
+}
+
+//SAVE/LOAD WRAPPERS
+void saveData() {
+    saveRoutesToFile();
+    saveDeliveriesToFile();
+    printf("Data saved to files.\n");
+}
+
+void loadData() {
+    loadRoutesFromFile();
+    loadDeliveriesFromFile();
+    printf("Data loaded (if available).\n");
+}
+
+
+
+
