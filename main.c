@@ -77,3 +77,9 @@ int main() {
             distanceMatrix[i][j] = (i == j) ? 0 : -1;
         }
     }
+    loadData();
+    menu();
+    saveData();
+    return 0;
+}
+
