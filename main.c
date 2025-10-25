@@ -172,3 +172,28 @@ void distanceManagement() {
         printf("0. Back\n");
         printf("Enter choice: ");
         scanf("%d", &ch);
+
+                if (ch == 1) {
+            if (cityCount < 2) {
+                printf("Add at least two cities first.\n");
+                continue;
+            }
+            displayCities();
+            int a = takeCityIndex("Enter source city index: ");
+            int b = takeCityIndex("Enter destination city index: ");
+            if (a == b) {
+                printf("Distance from city to itself = 0.\n");
+                continue;
+            }
+            double d;
+            printf("Enter distance (km): ");
+            scanf("%lf", &d);
+            distanceMatrix[a][b] = d;
+            distanceMatrix[b][a] = d;
+            printf("Distance updated.\n");
+        } else if (ch == 2) {
+            displayDistanceTable();
+        }
+    } while(ch != 0);
+}
+
