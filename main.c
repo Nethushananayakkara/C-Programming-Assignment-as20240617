@@ -69,3 +69,11 @@ void saveRoutesToFile();
 void loadRoutesFromFile();
 void saveDeliveriesToFile();
 void loadDeliveriesFromFile();
+
+int main() {
+    //distance matrix
+    for (int i = 0; i < MAX_CITIES; i++){
+        for (int j = 0; j < MAX_CITIES; j++){
+            distanceMatrix[i][j] = (i == j) ? 0 : -1;
+        }
+    }
