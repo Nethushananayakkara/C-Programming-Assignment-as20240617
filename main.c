@@ -196,4 +196,47 @@ void distanceManagement() {
         }
     } while(ch != 0);
 }
+void newDelivery() {
+    if (cityCount < 2) {
+        printf("Add cities and distances first!\n");
+        return;
+    }
 
+    displayCities();
+    int sourceIndex = takeCityIndex("Enter source city index: ");
+    int destIndex = takeCityIndex("Enter destination city index: ");
+    if (sourceIndex == destIndex) {
+        printf("Source and destination must differ.\n");
+        return;
+    }
+
+    double dist = distanceMatrix[sourceIndex][destIndex];
+    if (dist <= 0) {
+        printf("Distance not set between these cities.\n");
+        return;
+    }
+
+    double weight;
+    printf("Enter weight (kg): ");
+    scanf("%lf", &weight);
+
+    printf("\nSelect vehicle type:\n");
+    int i;
+    for (i = 0; i < NUM_VEHICLES; i++) {
+        printf("%d. %s (Capacity: %d kg, Rate: %f LKR/km)\n",
+               i+1, vehicleName[i], vehicleCapacity[i], vehicleRate[i]);
+    }
+
+    int choice;
+    printf("Enter vehicle number: ");
+    scanf("%d", &choice);
+    if (choice < 1 || choice > NUM_VEHICLES) {
+        printf("Invalid vehicle.\n");
+        return;
+    }
+    int v = choice - 1;
+
+    if (weight > vehicleCapacity[v]) {
+        printf("Weight exceeds vehicle capacity!\n");
+        return;
+    }
