@@ -284,4 +284,9 @@ void viewReports() {
         printf("Average Delivery Time: %.2f hours\n", totalTime / deliveryCount);
     printf("=============================\n");
 }
+void displayCities() {
+    printf("\n--- Cities ---\n");
+    for (int i = 0; i < cityCount; i++)
+        printf("%d. %s\n", i, cities[i]);
+}
 
