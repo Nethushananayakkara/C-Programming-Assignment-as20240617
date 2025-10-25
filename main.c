@@ -82,4 +82,16 @@ int main() {
     saveData();
     return 0;
 }
-
+void menu() {
+    int choice;
+    do {
+        printf("\n---------- LOGISTICS MANAGEMENT SYSTEM ----------\n");
+        printf("1. City Management\n");
+        printf("2. Distance Management\n");
+        printf("3. New Delivery Request\n");
+        printf("4. Reports\n");
+        printf("5. Save Data to Files\n");
+        printf("6. Load Data from Files\n");
+        printf("0. Exit\n");
+        printf("Enter choice: ");
+        scanf("%d", &choice);
