@@ -10,3 +10,43 @@
 #define MAX_NAME_LEN 50
 #define NUM_VEHICLES 3
 #define FUEL_PRICE 310.0
+
+    char vehicleName[20];
+    int vehicleCapacity[];
+    double vehicleRate[];
+    double vehicleSpeed[];
+    double vehicleEfficiency[];
+
+
+    int deliverySource[];
+    int deliveryDestination[];
+    int deliveryVehicleType[];
+    double deliveryWeight[];
+    double deliveryDistance[];
+    double deliveryBaseCost[];
+    double deliveryFuelUsed[];
+    double deliveryFuelCost[];
+    double deliveryOperationalCost[];
+    double deliveryProfit[];
+    double deliveryCustomerCharge[];
+    double deliveryTime[];
+
+
+char cities[MAX_CITIES][MAX_NAME_LEN];
+int cityCount = 0;
+double distanceMatrix[MAX_CITIES][MAX_CITIES];
+int deliveries[MAX_DELIVERIES];
+int deliveryCount = 0;
+
+char * vehicles[NUM_VEHICLES] = {
+    {"Van",   1000, 30.0, 60.0, 12.0},
+    {"Truck", 5000, 40.0, 50.0, 6.0},
+    {"Lorry", 10000, 80.0, 45.0, 4.0}
+};
+
+
+
+int vehicleCapacity[]={1000,5000,10000};
+double vehicleRate[]={30.0,40.0,80.0};
+double vehicleSpeed[]={60.0,50.0,45.0};
+double vehicleEfficiency[]={12.0,6.0,4.0};
