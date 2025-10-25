@@ -64,3 +64,8 @@ int takeCityIndex(const char *prompt);
 double calculateCost(double d, double r, double w);
 double calculateFuel(double d, double e);
 double calculateTime(double d, double s);
+
+void saveRoutesToFile();
+void loadRoutesFromFile();
+void saveDeliveriesToFile();
+void loadDeliveriesFromFile();
